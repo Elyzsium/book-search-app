@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Book Search Application
 
-## Getting Started
+This is a modern web application built with Next.js that allows users to search for books using the Google Books API. The application features a responsive design, pagination, and detailed book information.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Search for books using keywords
+- Display search results in a grid layout
+- View detailed information about each book
+- Pagination for browsing through search results
+- Responsive design for various screen sizes
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Google Books API
+
+## Project Structure
+
+The project is organized into several key components:
+
+- `api/api.ts`: Contains the function to fetch books from the Google Books API
+- `components/`:
+  - `BookCard.tsx`: Displays individual book information
+  - `BookList.tsx`: Renders a grid of BookCard components
+  - `BookModal.tsx`: Shows detailed information about a selected book
+  - `withPagination.tsx`: Handles pagination for search results using HOC
+  - `SearchBar.tsx`: Allows users to input search queries
+- `hooks/`:
+  - `useBookSearch.ts`: Custom hook for managing book search state and API calls
+- `types.ts`: Contains TypeScript interfaces for the application
+
+## Setup and Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/book-search-app.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd book-search-app
+   ```
+
+3. Install dependencies:
+   ```
+   npm install
+   ```
+
+4. Create a `.env.local` file in the root directory and add your Google Books API key:
+   ```
+   NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY=your_api_key_here
+   ```
+
+5. Run the development server:
+   ```
+   npm run dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+## Usage
+
+1. Enter a search query in the search bar and press Enter or click the Search button.
+2. Browse through the search results displayed in a grid layout.
+3. Click on a book card to view more detailed information about the book.
+4. Use the pagination controls at the bottom of the page to navigate through the search results.
+
+# withPagination Higher-Order Component
+
+`withPagination` is a React Higher-Order Component (HOC) that adds pagination functionality to any list component. It provides a flexible and reusable way to implement pagination in your React applications.
+
+## Features
+
+- Adds pagination controls to any list component
+- Customizable page range
+- Handles page changes and data fetching
+- Responsive design with mobile-friendly controls
+
+## Usage
+
+To use the `withPagination` HOC, follow these steps:
+
+1. Import the HOC in your component file:
+
+```typescript
+import withPagination from '@/components/withPagination';
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Wrap your list component with `withPagination`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```typescript
+const PaginatedList = withPagination(
+  YourListComponent,
+  totalItems,
+  itemsPerPage,
+  handlePageChange,
+  pageRange
+);
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
