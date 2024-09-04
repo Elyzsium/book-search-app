@@ -46,8 +46,47 @@ export interface ErrorProps {
     message: string;
   }
 
+// export interface PaginationProps {
+//   currentPage: number;
+//   totalPages: number;
+//   onPageChange: (page: number) => void;
+// }
+
+// interface PaginationProps {
+//   totalItems: number;
+//   itemsPerPage: number;
+//   currentPage?: number;
+//   pageRange?: number;
+//   onPageChange?: (page: number) => void;
+// }
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  handleNextPage?: () => void; 
+  handlePreviousPage?: () => void; 
+  totalItems: number;
+  itemsPerPage: number;
+  pageRange?: number;
+  
 }
+
+export interface BookListProps extends PaginationProps {
+  books: Book[];
+  onBookSelect: (book: Book) => void;
+}
+
+export interface UsePaginationResult {
+  currentPage: number;
+  totalPages: number;
+  handleNextPage: () => void;
+  handlePreviousPage: () => void;
+}
+
+export interface WithPaginationProps<T> {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  items: T[];
+}
+
