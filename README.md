@@ -102,3 +102,12 @@ const PaginatedList = withPagination(
 );
 ```
 
+## Further Reading
+
+I used the following resource to gain a better understanding of Higher-Order Components in React, which helped in the development of this `withPagination` HOC:
+
+- [Higher-Order Components in React](https://www.freecodecamp.org/news/higher-order-components-in-react/)
+
+This comprehensive article explains the concept of HOCs, their use cases, and best practices in React development. 
+
+
